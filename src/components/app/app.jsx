@@ -1,26 +1,27 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Container from 'muicss/lib/react/container';
 
-import PageMain from '../page-main';
-import PageSub from '../page-sub';
+import { MAIN_PAGE_ROUTE, SUB_PAGE_ROUTE } from '../../constants/routes';
+import Layout from '../Layout';
+import PageMain from '../PageMain';
+import PageSub from '../PageSub';
 
 export default class App extends React.Component {
     render() {
         return (
-            <Container>
+            <Layout>
                 <Switch>
                     <Route
                         exact={ true }
-                        path='/'
+                        path={ MAIN_PAGE_ROUTE }
                         component={ PageMain }
                     />
                     <Route
-                        path='*'
+                        path={ SUB_PAGE_ROUTE }
                         component={ PageSub }
                     />
                 </Switch>
-            </Container>
+            </Layout>
         );
     }
 }
