@@ -77,6 +77,7 @@
     "core-decorators": "^0.15.0",
     "cross-env": "^3.0.0",
     "lodash": "^4.17.3",
+    "muicss": "^0.9.36",
     "path": "^0.12.7",
     "prop-types": "^15.6.0",
     "react": "^15.4.1",
