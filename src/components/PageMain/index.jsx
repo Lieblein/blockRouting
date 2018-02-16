@@ -30,7 +30,7 @@ export default class PageMain extends React.Component {
         });
     };
 
-    isValid = (value) => value.length >= MIN_VALUE_LENGTH;;
+    isValid = (value) => value.length >= MIN_VALUE_LENGTH;
 
     isSubmitDisabled = () => {
         const { changed, valid } = this.state;
