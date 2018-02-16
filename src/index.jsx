@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader'
 
 import App from './components/App';
@@ -12,9 +11,7 @@ const mountNode = document.getElementById('react-app');
 
 const Application = () => (
     <Provider store={ store }>
-        <BrowserRouter basename='/'>
-            <App />
-        </BrowserRouter>
+        <App />
     </Provider>
 );
 

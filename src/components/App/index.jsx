@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { MAIN_PAGE_ROUTE, SUB_PAGE_ROUTE } from '../../constants/routes';
 import Layout from '../Layout';
@@ -9,19 +9,21 @@ import PageSub from '../PageSub';
 export default class App extends React.Component {
     render() {
         return (
-            <Layout>
-                <Switch>
-                    <Route
-                        exact={ true }
-                        path={ MAIN_PAGE_ROUTE }
-                        component={ PageMain }
-                    />
-                    <Route
-                        path={ SUB_PAGE_ROUTE }
-                        component={ PageSub }
-                    />
-                </Switch>
-            </Layout>
+            <BrowserRouter basename='/'>
+                <Layout>
+                    <Switch>
+                        <Route
+                            exact={ true }
+                            path={ MAIN_PAGE_ROUTE }
+                            component={ PageMain }
+                        />
+                        <Route
+                            path={ SUB_PAGE_ROUTE }
+                            component={ PageSub }
+                        />
+                    </Switch>
+                </Layout>
+            </BrowserRouter>
         );
     }
 }
