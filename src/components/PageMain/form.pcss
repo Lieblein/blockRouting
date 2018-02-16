@@ -1,0 +1,27 @@
+@import "../../assets/styles/variables.pcss";
+
+.form {
+    display: flex;
+
+    &__input {
+        padding-top: 5px;
+        margin-right: 20px;
+        flex-grow: 1;
+
+        &--error > input:not(:focus) {
+            border-color: var(--color-error);
+            border-width: 2px;
+        }
+
+        &--success > input:not(:focus) {
+            border-color: var(--color-success);
+            border-width: 2px;
+        }
+    }
+
+    &__button {
+        &--disabled {
+            cursor: not-allowed;
+        }
+    }
+}
