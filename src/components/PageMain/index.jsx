@@ -13,23 +13,27 @@ export default class PageMain extends React.Component {
         defaultValue: '',
         value: '',
 
-        valid: null
+        valid: null,
+        changed: false
     };
 
     onChange = ({ target: { value } }) => {
+        const { defaultValue } = this.state;
+
         const valid = this.isValid(value);
+        const changed = defaultValue !== value;
+
         this.setState({
             value,
-            valid
+            valid,
+            changed
         });
     };
 
     isValid = (value) => value.length >= MIN_VALUE_LENGTH;;
 
     isSubmitDisabled = () => {
-        const { defaultValue, value, valid } = this.state;
-        const changed = defaultValue !== value;
-
+        const { changed, valid } = this.state;
         return !valid || !changed;
     };
 
