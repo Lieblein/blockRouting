@@ -4,6 +4,7 @@ import Input from 'muicss/lib/react/input';
 import Button from 'muicss/lib/react/button';
 import cn from 'classnames';
 
+import Confirm from '../Confirm';
 import './form.pcss';
 
 const MIN_VALUE_LENGTH = 3;
@@ -14,7 +15,9 @@ export default class PageMain extends React.Component {
         value: '',
 
         valid: null,
-        changed: false
+        changed: false,
+
+        confirmVisible: true
     };
 
     onChange = ({ target: { value } }) => {
@@ -38,7 +41,7 @@ export default class PageMain extends React.Component {
     };
 
     render() {
-        const { value, valid } = this.state;
+        const { value, valid, confirmVisible } = this.state;
         const disabled = this.isSubmitDisabled();
 
         return (
@@ -63,6 +66,11 @@ export default class PageMain extends React.Component {
                 >
                     Submit
                 </Button>
+
+                {
+                    confirmVisible &&
+                        <Confirm />
+                }
             </Form>
         );
     }
