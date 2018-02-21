@@ -17,7 +17,7 @@ export default class PageMain extends React.Component {
         valid: null,
         changed: false,
 
-        confirmVisible: true
+        confirmVisible: false
     };
 
     onChange = ({ target: { value } }) => {
