@@ -51,8 +51,9 @@ export default class Confirm extends React.Component {
                     { children }
                     <div className='confirm-buttons'>
                         {
-                            buttons.map(({ text, color, onClick }) =>
+                            buttons.map(({ text, color, onClick }, index) =>
                                 <Button
+                                    key={ index }
                                     className='confirm-buttons__item'
                                     color={ color }
                                     onClick={ onClick }
