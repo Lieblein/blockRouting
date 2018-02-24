@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const helpers = require('./helpers');
+// const helpers = require('./helpers');
 
 const ENV = 'production';
 
@@ -27,57 +27,6 @@ const config = webpackMerge.smart(commonConfig, {
                     fallback: 'style-loader',
                     use: ['css-loader', 'postcss-loader']
                 })
-            },
-            {
-                test: /\.(jpe?g|png|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: { name: ASSETS_PATH + '[name].[ext]' }
-                    },
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            mozjpeg: {
-                                progressive: true
-                            },
-                            gifsicle: {
-                                interlaced: false
-                            },
-                            optipng: {
-                                optimizationLevel: 7
-                            },
-                            pngquant: {
-                                quality: '65-90',
-                                speed: 4
-                            }
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.(svg)$/,
-                use: [
-                    {
-                        loader: 'svg-sprite-loader',
-                        options: { name: ASSETS_PATH + '[name].[ext]' }
-                    },
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            svgo: {
-                                plugins: [
-                                    { removeViewBox: false },
-                                    { removeEmptyAttrs: false }
-                                ]
-                            }
-                        }
-                    }
-                ],
-                include: [
-                    helpers.root('src'),
-                    helpers.root('node_modules', 'yabt-kit')
-                ]
             }
         ]
     },

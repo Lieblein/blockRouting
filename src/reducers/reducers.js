@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 
-// import appReducer from './app-reducer';
+import confirm from './confirm';
 
 const reducers = {
+    confirm
 };
 
 export default combineReducers(reducers);
