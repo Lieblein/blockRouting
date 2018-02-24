@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from 'react-material-modal';
 import Button from 'muicss/lib/react/button';
 
-import Portal from '../Portal';
+import Modal from '../Modal';
 import './confirm-buttons.pcss';
 
 const BUTTON_TYPE = PropTypes.shape({
@@ -41,30 +40,28 @@ export default class Confirm extends React.Component {
         const { onClose, buttons, children } = this.props;
 
         return (
-            <Portal>
-                <Modal
-                    title='Confirm'
-                    size='sm'
-                    showing={ true }
-                    close={ onClose }
-                >
-                    { children }
-                    <div className='confirm-buttons'>
-                        {
-                            buttons.map(({ text, color, onClick }, index) =>
-                                <Button
-                                    key={ index }
-                                    className='confirm-buttons__item'
-                                    color={ color }
-                                    onClick={ onClick }
-                                >
-                                    { text }
-                                </Button>
-                            )
-                        }
-                    </div>
-                </Modal>
-            </Portal>
+            <Modal
+                title='Confirm'
+                onClose={ onClose }
+            >
+                { children }
+                <div className='confirm-buttons'>
+                    {
+                        buttons.map(({ text, color, onClick }, index) =>
+                            <Button
+                                key={ index }
+                                className='confirm-buttons__item'
+                                color={ color }
+                                size='small'
+                                variant='flat'
+                                onClick={ onClick }
+                            >
+                                { text }
+                            </Button>
+                        )
+                    }
+                </div>
+            </Modal>
         );
     }
 }

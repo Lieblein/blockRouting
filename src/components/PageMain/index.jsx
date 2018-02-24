@@ -81,9 +81,28 @@ export class PageMain extends React.Component {
         return !valid || !changed;
     };
 
+    save = () => {
+        console.log('save');
+        this.setState({
+            changed: false
+        });
+    };
+
+    saveAndGoNext = () => {
+        this.save();
+        this.props.goToNextPage();
+    };
+
+    blockAndHide = () => {
+        const { blockRouting, hideConfirm } = this.props;
+
+        blockRouting();
+        hideConfirm();
+    };
+
     render() {
         const {
-            confirmVisible, hideConfirm, goToNextPage, blockRouting
+            confirmVisible, goToNextPage
         } = this.props;
         const {
             value, valid
@@ -109,6 +128,7 @@ export class PageMain extends React.Component {
                     className={ cn('form__button', { 'form__button--disabled': disabled }) }
                     color='primary'
                     disabled={ disabled }
+                    onClick={ this.save }
                 >
                     Submit
                 </Button>
@@ -116,12 +136,12 @@ export class PageMain extends React.Component {
                 {
                     confirmVisible &&
                         <Confirm
-                            onClose={ () => { blockRouting(); hideConfirm(); } }
+                            onClose={ this.blockAndHide }
                             buttons={ [
                                 {
                                     text: 'Save',
                                     color: 'primary',
-                                    onClick: goToNextPage
+                                    onClick: this.saveAndGoNext
                                 },
                                 {
                                     text: 'Go next',
