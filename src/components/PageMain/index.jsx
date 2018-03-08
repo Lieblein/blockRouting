@@ -139,9 +139,9 @@ export class PageMain extends React.Component {
                             onClose={ this.blockAndHide }
                             buttons={ [
                                 {
-                                    text: 'Save',
+                                    text: valid ? 'Save' : 'Cancel',
                                     color: 'primary',
-                                    onClick: this.saveAndGoNext
+                                    onClick: valid ? this.saveAndGoNext : this.blockAndHide
                                 },
                                 {
                                     text: 'Go next',
@@ -151,6 +151,9 @@ export class PageMain extends React.Component {
                             ] }
                         >
                             You have not saved form data
+                            {
+                                !valid && ', and form has error'
+                            }
                         </Confirm>
                 }
             </Form>
