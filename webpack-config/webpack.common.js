@@ -6,6 +6,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const getPostcssPlugins = require('./postcss_plugins.js');
 const helpers = require('./helpers');
 
+const routes = require('../src/constants/routes');
+
 const webpackConfig = function (options) {
     const env = options.env;
     const folder = options.folder || '';
@@ -60,7 +62,8 @@ const webpackConfig = function (options) {
             }),
             new HtmlWebpackPlugin({
                 inject: 'body',
-                template: 'src/stub.html'
+                template: 'src/stub.ejs',
+                base: isProd ? `/${routes.BASE_URL}` : '/'
             }),
             new webpack.LoaderOptionsPlugin({
                 options: {
@@ -74,8 +77,6 @@ const webpackConfig = function (options) {
                     flatten: true
                 }
             ])
-            // uncomment if you want to load only `moment/locale/ru.js`
-            // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/)
         ]
     };
 };
