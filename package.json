@@ -10,7 +10,7 @@
     "lint-js": "eslint ./src/ --ext .js,.jsx",
     "lint-css": "stylelint ./src/**/*.css",
     "build": "cross-env NODE_ENV=production node build.js",
-    "deploy": "npm run build && gh-pages-deploy",
+    "deploy": "gh-pages-deploy",
     "clean-source": "rimraf README.md src webroot package.json"
   },
   "repository": "https://github.com/Lieblein/blockRouting.git",
