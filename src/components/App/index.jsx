@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { showConfirm } from '../../actions/confirm';
-import { MAIN_PAGE_ROUTE, SUB_PAGE_ROUTE } from '../../constants/routes';
+import { BASE_URL, MAIN_PAGE_ROUTE, SUB_PAGE_ROUTE } from '../../constants/routes';
 import Layout from '../Layout';
 import PageMain from '../PageMain';
 import PageSub from '../PageSub';
@@ -25,7 +25,7 @@ export class App extends React.Component {
     render() {
         return (
             <BrowserRouter
-                basename='/'
+                basename={ BASE_URL }
                 getUserConfirmation={ this.getUserConfirmation }
             >
                 <Layout>
