@@ -1,0 +1,127 @@
+.nav__list {
+
+    padding: 0;
+
+    margin: 0;
+}
+
+.nav__item {
+
+    list-style: none;
+
+    display: inline-block;
+
+    margin-right: 20px;
+}
+
+.nav__item:last-child {
+
+    margin-right: 0;
+}
+
+.nav__link {
+
+    display: block;
+
+    padding: 10px 20px;
+
+    height: 100%;
+
+    border: 1px solid #ccc;
+
+    border-top-left-radius: 4px;
+
+    border-top-right-radius: 4px;
+
+    color: #2196F3;
+
+    -webkit-transition: color .25s;
+
+    transition: color .25s;
+
+    cursor: pointer;
+}
+
+.nav__link:hover,
+        .nav__link:focus {
+
+    color: #333;
+
+    text-decoration: none;
+}
+
+.nav__link--current {
+
+    border-bottom-color: #fff;
+
+    color: #333;
+
+    pointer-events: none;
+
+    cursor: default;
+}.layout {
+    margin-top: 80px;
+}
+
+.layout__nav {
+    margin-bottom: -1px;
+}
+
+.layout__content {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    padding: 15px 20px;
+    max-width: 800px;
+    min-width: 300px;
+}
+.modal__title {
+
+    margin: 0px;
+
+    padding: 24px 24px 20px;
+}
+
+.modal__body {
+
+    padding: 0px 24px 24px;
+}
+.confirm-buttons {
+    margin: 10px -16px 0 0;
+    text-align: right;
+}
+.confirm-buttons__item {
+    margin: 0;
+}
+.confirm-buttons__item:last-child {
+    margin-right: 0;
+}
+.form {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.form__input {
+    padding-top: 5px;
+    margin-right: 20px;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+}
+
+.form__input--error > input:not(:focus) {
+    border-color: #F44336;
+    border-width: 2px;
+}
+
+.form__input--success > input:not(:focus) {
+    border-color: #6c6;
+    border-width: 2px;
+}
+
+.form__button--disabled {
+    cursor: not-allowed;
+}

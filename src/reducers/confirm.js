@@ -6,7 +6,7 @@ const initialState = {
     blockRouting: () => {}
 };
 
-export default function colorModeReducer(state = initialState, action) {
+export default function cofirmReducer(state = initialState, action) {
     switch (action.type) {
         case CONFIRM_SHOW: {
             const { goToNextPage, blockRouting } = action;
