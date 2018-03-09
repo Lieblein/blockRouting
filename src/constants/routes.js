@@ -1,5 +1,5 @@
 const BASE_URL = process.env.NODE_ENV === 'production' ?
-    '/lieblein.github.io/blockRouting.github.io/build/'
+    'lieblein.github.io/blockRouting/build/'
     : '/';
 
 const MAIN_PAGE_ROUTE = '/';
