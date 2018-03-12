@@ -14,6 +14,8 @@
     "rebuild": "rimraf /build && npm run build && npm run start-prod",
     "re": "npm run rebuild",
     "deploy": "gh-pages-deploy",
+    "docker-build": "./docker-build.sh $npm_package_name $npm_package_version",
+    "db": "npm run docker-build",
     "clean-source": "rimraf README.md src webroot package.json"
   },
   "repository": "https://github.com/Lieblein/blockRouting.git",
