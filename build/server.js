@@ -85,10 +85,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 const app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 
-// `${routes.BASE_URL}/assets`;
-//
-// app.use(`${routes.BASE_URL}/assets`, express.static(helpers.root('/build/assets')));
-//
 app.get('/', function(req, res) {
     res.sendFile(__WEBPACK_IMPORTED_MODULE_1__webpack_config_helpers___default.a.root('/build/index.html'));
 });
@@ -96,10 +92,8 @@ app.get('/', function(req, res) {
 app.use(`/${__WEBPACK_IMPORTED_MODULE_2__src_constants_routes___default.a.BASE_URL}`, __WEBPACK_IMPORTED_MODULE_0_express___default.a.static(__WEBPACK_IMPORTED_MODULE_1__webpack_config_helpers___default.a.root('/build')));
 
 app.listen(8080, function () {
-    console.log('routes.BASE_URL', __WEBPACK_IMPORTED_MODULE_2__src_constants_routes___default.a.BASE_URL);
-    console.log('Example app listening on port 8080!');
+    console.log('App listening on port 8080!');
 });
-
 
 
 /***/ }),

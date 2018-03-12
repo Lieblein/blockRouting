@@ -11,6 +11,8 @@
     "lint-js": "eslint ./src/ --ext .js,.jsx",
     "lint-css": "stylelint ./src/**/*.css",
     "build": "cross-env NODE_ENV=production node build.js",
+    "rebuild": "rimraf /build && npm run build && npm run start-prod",
+    "re": "npm run rebuild",
     "deploy": "gh-pages-deploy",
     "clean-source": "rimraf README.md src webroot package.json"
   },
