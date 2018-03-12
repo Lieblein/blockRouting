@@ -1,0 +1,2 @@
+export const CONFIRM_SHOW = 'CONFIRM_SHOW';
+export const CONFIRM_HIDE = 'CONFIRM_HIDE';

@@ -6,6 +6,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const getPostcssPlugins = require('./postcss_plugins.js');
 const helpers = require('./helpers');
 
+const routes = require('../src/constants/routes');
+
 const webpackConfig = function (options) {
     const env = options.env;
     const folder = options.folder || '';
@@ -47,51 +49,7 @@ const webpackConfig = function (options) {
                     test: /\.p?css$/,
                     use: ['style-loader', 'css-loader', 'postcss-loader']
                 },
-                // images
-                {
-                    test: /\.(jpe?g|png|gif)$/,
-                    use: {
-                        loader: 'file-loader',
-                        options: { name: folder + '[name].[ext]' }
-                    },
-                    include: [
-                        helpers.root('src'),
-                        helpers.root('node_modules', 'yabt-kit')
-                    ]
-                },
-                {
-                    test: /\.(svg)$/,
-                    use: {
-                        loader: 'svg-sprite-loader',
-                        options: { name: folder + '[name].[ext]' }
-                    },
-                    include: [
-                        helpers.root('src'),
-                        helpers.root('node_modules', 'yabt-kit')
-                    ]
-                },
-                // fonts
-                {
-                    test: /.(eot)$/,
-                    use: {
-                        loader: 'file-loader',
-                        options: { mimetype: 'application/vnd.ms-fontobject', name: folder + '[name].[ext]' }
-                    }
-                },
-                {
-                    test: /.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                    use: {
-                        loader: 'file-loader',
-                        options: { mimetype: 'application/font-woff', name: folder + '[name].[ext]' }
-                    }
-                },
-                {
-                    test: /.(ttf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                    use: {
-                        loader: 'file-loader',
-                        options: { mimetype: 'application/octet-stream', name: folder + '[name].[ext]' }
-                    }
-                },
+                // html
                 {
                     test: /\.html$/,
                     loader: 'html-loader?minimize=false'
@@ -104,7 +62,8 @@ const webpackConfig = function (options) {
             }),
             new HtmlWebpackPlugin({
                 inject: 'body',
-                template: 'src/stub.html'
+                template: 'src/stub.ejs',
+                base: isProd ? `/${routes.BASE_URL}` : '/'
             }),
             new webpack.LoaderOptionsPlugin({
                 options: {
@@ -118,8 +77,6 @@ const webpackConfig = function (options) {
                     flatten: true
                 }
             ])
-            // uncomment if you want to load only `moment/locale/ru.js`
-            // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/)
         ]
     };
 };
