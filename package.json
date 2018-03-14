@@ -1,6 +1,6 @@
 {
   "name": "block-routing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Block routing react-router v4",
   "main": "index.js",
   "scripts": {
