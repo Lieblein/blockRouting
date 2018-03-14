@@ -4,29 +4,34 @@ echo "---Start---"
 
 appName=$1
 appVersion=$2
+
 buildImage="$appName-build:latest"
 image="$appName:$appVersion"
 
-echo "---Build builder image---"
-docker build -f ./Dockerfile-build -t $buildImage .
+PROJECT_FOLDER='/project'
 
-echo "---Run builder container---"
+echo " "
+echo "---Build builder-image---"
+docker build --build-arg --build-arg PROJECT_FOLDER=$PROJECT_FOLDER -f ./Dockerfile-build -t $buildImage .
+
+echo " "
+echo "---Run builder-container---"
 docker run -d $buildImage
 builderContainerId=`docker ps | grep $buildImage | awk '{print $1}'`
 
-echo "builderContainerId $builderContainerId";
-
 mkdir tmp
 
+echo " "
 echo "---Copy in tmp folder all required for prod files---"
-cp package.json ./tmp/package.json
-docker cp $builderContainerId:/src/build ./tmp/build
-docker cp $builderContainerId:/src/node_modules ./tmp/node_modules
 
+docker cp $builderContainerId:$PROJECT_FOLDER/build ./tmp/build
+
+echo " "
 echo "---Build service container---"
-docker build -f ./Dockerfile -t $image .
+docker build --build-arg PROJECT_FOLDER=$PROJECT_FOLDER -f ./Dockerfile -t $image .
 
-echo "---Clean tmp files---"
+echo " "
+echo "---Clean up tmp files---"
 rm -rf tmp
 docker rm -f $builderContainerId
 
