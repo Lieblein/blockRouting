@@ -36,5 +36,3 @@ rm -rf tmp
 docker rm -f $builderContainerId
 
 docker push $image
-# push $image to repository
-# run service container from $image (docker run --name router-demo -d -p 8080:8080 -e NODE_ENV=production <imageId> node build/server.js)
