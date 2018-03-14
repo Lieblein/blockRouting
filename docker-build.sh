@@ -12,7 +12,7 @@ PROJECT_FOLDER='/project'
 
 echo " "
 echo "---Build builder-image---"
-docker build --build-arg --build-arg PROJECT_FOLDER=$PROJECT_FOLDER -f ./Dockerfile-build -t $buildImage .
+docker build --build-arg PROJECT_FOLDER=$PROJECT_FOLDER -f ./Dockerfile-build -t $buildImage .
 
 echo " "
 echo "---Run builder-container---"
