@@ -14,9 +14,13 @@
     "rebuild": "rimraf /build && npm run build && npm run start-prod",
     "re": "npm run rebuild",
     "deploy": "gh-pages-deploy",
+    "patch-docker": "npm run release-patch && npm run docker-build",
     "docker-build": "./docker-build.sh $npm_package_name $npm_package_version",
     "db": "npm run docker-build",
-    "clean-source": "rimraf README.md src webroot package.json"
+    "clean-source": "rimraf README.md src webroot package.json",
+    "release-patch": "npm version patch -m 'chore(*): patch version'",
+    "release-minor": "npm version minor -m 'chore(*): minor version'",
+    "release-major": "npm version major -m 'chore(*): major version'"
   },
   "repository": "https://github.com/Lieblein/blockRouting.git",
   "author": "lla",

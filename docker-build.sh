@@ -4,9 +4,10 @@ echo "---Start---"
 
 appName=$1
 appVersion=$2
+dockerHubNameSpace="lbp555"
 
 buildImage="$appName-build:latest"
-image="$appName:$appVersion"
+image="$dockerHubNameSpace/$appName:$appVersion"
 
 PROJECT_FOLDER='/project'
 
@@ -23,7 +24,6 @@ mkdir tmp
 
 echo " "
 echo "---Copy in tmp folder all required for prod files---"
-
 docker cp $builderContainerId:$PROJECT_FOLDER/build ./tmp/build
 
 echo " "
@@ -35,5 +35,6 @@ echo "---Clean up tmp files---"
 rm -rf tmp
 docker rm -f $builderContainerId
 
+docker push $image
 # push $image to repository
 # run service container from $image (docker run --name router-demo -d -p 8080:8080 -e NODE_ENV=production <imageId> node build/server.js)
